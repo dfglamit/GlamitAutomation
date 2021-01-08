@@ -1,4 +1,4 @@
-package boxuno;
+package tests;
 
 import locators.HomePage;
 import org.junit.After;
