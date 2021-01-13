@@ -22,12 +22,12 @@ public class TitleHome_Test {
 
     @Test
     public void searchBox() throws InterruptedException {
-        assertEquals("REMERA KID BEACH", homePage.getTitle());
+        assertEquals("REMERA KID BEACH", driver.getTitle());
     }
 
     @After
     public void closeTest(){
-        //driver.quit();
+        driver.quit();
     }
 
 }

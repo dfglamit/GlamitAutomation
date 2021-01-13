@@ -15,14 +15,14 @@ public class SearchBox_Test {
     @Before
     public void setup(){
         homePage = new HomePage(driver);
-        driver = homePage.chromeDriverConnection();
+        driver = homePage.firefoxDriverConnection();
         homePage.visit("https://tienda.mimo.com.ar/");
     }
 
     @Test
     public void searchBox() throws InterruptedException {
         homePage.searchProduct();
-
+        Thread.sleep(1000);
         assertEquals("REMERA KID BEACH", homePage.searchResult());
     }
 

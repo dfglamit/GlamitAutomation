@@ -18,11 +18,21 @@ public class HomePage extends Base {
 
     By nameSingleProduct = By.xpath("/html/body/div[2]/div/form/article/div/h1");
 
+    By popUpSuscriber = By.cssSelector("#onesignal-slidedown-dialog");
+    By popUpSuscriberBtn = By.cssSelector("#onesignal-slidedown-cancel-button");
+
     public HomePage(WebDriver driver){
         super(driver);
     }
 
     public void searchProduct() throws InterruptedException {
+
+        Thread.sleep(2000);
+
+        if(isDisplayed(popUpSuscriber)){
+            click(popUpSuscriberBtn);
+        }
+
         if(isDisplayed(searchBox) && isDisplayed(searchBtn)){
             type("Remera", searchBox);
             click(searchBtn);
@@ -31,13 +41,11 @@ public class HomePage extends Base {
         }else{
             System.out.println("Search box was not found!");
         }
+
     }
 
     public String searchResult(){
         return getText(firstProductTitleXpaht);
     }
 
-    public String getTitle(){
-        return getTitle();
-    }
 }
