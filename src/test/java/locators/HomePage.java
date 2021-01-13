@@ -5,47 +5,45 @@ import org.openqa.selenium.WebDriver;
 
 public class HomePage extends Base {
 
-    By searchBox = By.name("q");
-    By searchBtn = By.cssSelector("#search_mini_form > div > button");
+    /* Home Page Locators */
+    By search_box               = By.name("q");
+    By search_btn               = By.cssSelector("#search_mini_form > div > button");
+    By first_product_title      = By.cssSelector("#nombreProducto");
+    By popup_suscriber          = By.cssSelector("#onesignal-slidedown-dialog");
+    By popup_suscriber_btn      = By.cssSelector("#onesignal-slidedown-cancel-button");
+    By first_product_gallery    = By.cssSelector("#the-210136 > div.containerdestaquecm > div > div > div.swiper-wrapper > div.swiper-slide.swiper-slide-active > a");
 
-    By firstProductTitleCss = By.cssSelector("/html/body/div[2]/header/div/div/div/form/div[2]/div/div/div[1]/a[1]/div/div/div[2]/div[1]/span");
-    By firstProductTitleXpaht = By.xpath("#am_search_popup > div > div.am-products > a:nth-child(2) > div > div > div.am_right > div.am_title > span");
-
-    By firstProductLink = By.xpath("/html/body/div[2]/header/div/div/div/form/div[2]/div/div/div[1]/a[1]");
-
-    By getSearchResultBoxCss = By.cssSelector("#am_search_popup > div > div.am-products > h3");
-    By getSearchResultBoxXpaht = By.xpath("/html/body/div[2]/header/div/div/div/form/div[2]/div/div/div[1]/h3");
-
-    By nameSingleProduct = By.xpath("/html/body/div[2]/div/form/article/div/h1");
-
-    By popUpSuscriber = By.cssSelector("#onesignal-slidedown-dialog");
-    By popUpSuscriberBtn = By.cssSelector("#onesignal-slidedown-cancel-button");
-
+    /* Constructor */
     public HomePage(WebDriver driver){
         super(driver);
     }
 
+    /* Home Page Methods*/
     public void searchProduct() throws InterruptedException {
 
         Thread.sleep(2000);
 
-        if(isDisplayed(popUpSuscriber)){
-            click(popUpSuscriberBtn);
+        if(isDisplayed(popup_suscriber)){
+            click(popup_suscriber_btn);
         }
 
-        if(isDisplayed(searchBox) && isDisplayed(searchBtn)){
-            type("Remera", searchBox);
-            click(searchBtn);
+        if(isDisplayed(search_box) && isDisplayed(search_btn)){
+            type("Remera", search_box);
+            click(search_btn);
             Thread.sleep(2000);
-            click(firstProductLink);
+            click(first_product_gallery);
+            Thread.sleep(2000);
         }else{
             System.out.println("Search box was not found!");
         }
 
     }
 
+    /* Home Page Data */
+
+    // Este metodo podria ir en la clase de galeria---Revisar
     public String searchResult(){
-        return getText(firstProductTitleXpaht);
+        return getText(first_product_title);
     }
 
 }

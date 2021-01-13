@@ -8,25 +8,25 @@ import org.openqa.selenium.WebDriver;
 
 import static org.junit.Assert.assertEquals;
 
-public class TitleHome_Test {
+public class PurchaseFlow_Test {
 
     private WebDriver driver;
     HomePage homePage;
 
     @Before
-    public void setup(){
+    public void setUp(){
         homePage = new HomePage(driver);
         driver = homePage.chromeDriverConnection();
         homePage.visit("https://tienda.mimo.com.ar/");
     }
 
     @Test
-    public void searchBox() throws InterruptedException {
-        assertEquals("REMERA KID BEACH", driver.getTitle());
+    public void purchaseFlow() throws InterruptedException {
+        // Escribir prueba para realizar compra
     }
 
     @After
-    public void closeTest(){
+    public void tearDown(){
         driver.quit();
     }
 
